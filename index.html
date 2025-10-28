@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA vs Humano - Arcade</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500;700&family=VT323&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dark">
+  <canvas id="particle-canvas"></canvas>
+  <section id="start-screen" class="screen active">
+    <div class="card center-card">
+      <h1 class="logo">IA <span class="logo-vs">VS</span> Humano</h1>
+      <p class="subtitle">Tente Adivinhar se a imagem foi feita por uma IA ou por um humano!</p>
+      <div class="btn-group">
+        <button class="btn primary large" onclick="startGame('classic')">Modo Clássico</button>
+        <button class="btn ghost large" onclick="startGame('challenge')">Modo Desafio</button>
+      </div>
+      <div style="margin-top:20px;">
+        <button class="btn ghost" id="toggle-theme">🌞 Mudar Tema</button>
+      </div>
+      <p style="margin-top:16px; font-size:0.7rem; opacity:0.85">Dica: Veja os premios com a nossa equipe</p>
+    </div>
+  </section>
+
+  <section id="game-screen" class="screen">
+    <div class="game-container card">
+      <div class="game-header">
+        <p>Rodada: <span id="round">1</span></p>
+        <p>Pontos: <span id="score">0</span> <span class="small">| High Score: <span id="highscore">0</span></span></p>
+        <p id="timer"></p>
+      </div>
+
+      <div class="game-main">
+        <div class="image-card card">
+          <img id="game-image" src="" alt="Imagem de desafio" />
+          <div id="popups" class="popups"></div>
+        </div>
+
+        <div class="actions-card card">
+          <button class="btn primary large" onclick="handleGuess('human')">Humano</button>
+          <button class="btn ghost large" onclick="handleGuess('ai')">IA</button>
+          <div class="feedback" id="feedback"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="end-screen" class="screen">
+    <div class="card center-card">
+      <div class="end-card">
+        <h2 id="final-title" class="glitch">Fim do Jogo</h2>
+        <p id="prize" class="prize-text"></p>
+
+        <div class="results-box">
+          <p>Acertos: <span id="final-hits">0</span></p>
+          <p>Score: <span id="final-points">0</span></p>
+          <p>High Score: <span id="final-highscore">0</span></p>
+        </div>
+
+        <div class="btn-group" style="margin-top:16px;">
+          <button class="btn primary large" onclick="restartGame()">Jogar Novamente</button>
+          <button class="btn ghost large" onclick="goToStart()">Voltar ao Menu</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="./JS/particle-arcade.js"></script>
+  <script src="./JS/script.js"></script>
+  <script src="./JS/challenge-mode.js"></script>
+
+</body>
+
+</html>
